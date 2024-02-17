@@ -23,18 +23,12 @@ client.on("messageCreate", async (message) => {
     try {
         if (message.author.bot) return;
 
-        // 
-        if (message.content === "/Toggle-on") {
+        if (message.content === '/Toggle-on') {
             const guild = message.guild;
             const channel = message.channel;
         }
-        
-         client.on('interactionCreate', async interaction => {
-         if (!interaction.isCommand() || interaction.commandName !== 'Toggle-On') return;
 
-            await interaction.reply('Toggling on.');
-        })
-
+        // چالاک کردنی مۆدێل بۆ وەرگرتنی وەڵامی چاودێری بۆ پیشاندانی بۆشایی
         const { response } = await model.generateContent(message.cleanContent);
 
         // وەرگرتنی وەڵامی چاودێری بۆ ئەو پەیامەی کە بۆشایی دیاری کراوە
