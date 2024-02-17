@@ -1,31 +1,30 @@
-
-const discord = require("discors.js");
-const { GoggleGenerativeAi }= require("@google/generative-ai");
-
-
+const discord = require("discord.js");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+require('dotenv').config();
 const MODEL = "gemini-pro";
-const API_KEY = process.env.API_KEY ?? "AIzaSyDPgEcHAHjZMrFBs_iMBZYPaKCNiRgmu0U";
-const BOT_TOKEN = process.env.BOT_TOKEN ?? "";
-// const CHANNEL_ID = process.env.CHANNEL_ID ?? "1208404049393614858";
+const API_KEY = process.env.API_KEY || "AIzaSyDPgEcHAHjZMrFBs_iMBZYPaKCNiRgmu0U";
+const BOT_TOKEN = process.env.BOT_TOKEN || "MTIwODQxMjEyMzI5MDUzMzkwOA.Gzr8yl.iugwii6gGoxMDWWDhPmFRgC7hbyqvXYLV7B96E";
+// const CHANNEL_ID = process.env.CHANNEL_ID || "1208404049393614858";
 
 const ai = new GoogleGenerativeAI(API_KEY);
-const model = ai.getGenerativeModel({model: MODEL});
+const model = ai.getGenerativeModel({ model: MODEL });
 
 const client = new discord.Client({
-   intents: Object.keys(discord.GatewayIntentBits),
+  intents: Object.keys(discord.GatewayIntentBits),
 });
 
-const.on("ready", () => {
-  console.log("Botakaman Esta Amadaya💎🤍💎")
+client.on("ready", () => {
+  console.log("Bot is ready!");
+});
 
-  client.login("BOT_TOKEN")
+client.login(BOT_TOKEN);
 
-  client.on("messageCreate", async (message) => {
+client.on("messageCreate", async (message) => {
     try {
         if (message.author.bot) return;
 
         // ئەم قسەیە تایبەتییە بۆ بەردەوامی بەکارهێنانی کۆماندی Toggle-on
-        if (message.content === '/Toggle-on') {
+        if (message.content === "/Toggle-on") {
             const guild = message.guild; // بدەردەوامی ئەو سێرڤەرەی دیسکۆردەکەی دەتەوێت کاریگەر بکەیت
             const channel = message.channel; // بدەردەوامی ئەو چەناڵەی دیسکۆردەکەی دەتەوێت کاریگەر بکەیت
 
@@ -35,6 +34,12 @@ const.on("ready", () => {
             // ئەگەر کاربر لە بەردەوامی کردنی کۆماندی Toggle-on وەرگیرا، ئەوا چالاک دەکرێت و پاشان دەتوانیت چات بکەیت.
             // تکایە دەقی ئەم قسەیە پێناسە بکە بۆ بەردەوامی کردنی کۆماندی Toggle-on
         }
+        
+         client.on('interactionCreate', async interaction => {
+         if (!interaction.isCommand() || interaction.commandName !== 'Toggle-On') return;
+
+            await interaction.reply('Toggling on.');
+        })
 
         // چالاک کردنی مۆدێل بۆ وەرگرتنی وەڵامی چاودێری بۆ پیشاندانی بۆشایی
         const { response } = await model.generateContent(message.cleanContent);
