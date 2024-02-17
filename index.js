@@ -1,3 +1,4 @@
+
 const discord = require("discors.js");
 const { GoggleGenerativeAi }= require("@google/generative-ai");
 
