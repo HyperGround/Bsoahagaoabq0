@@ -23,16 +23,10 @@ client.on("messageCreate", async (message) => {
     try {
         if (message.author.bot) return;
 
-        // ئەم قسەیە تایبەتییە بۆ بەردەوامی بەکارهێنانی کۆماندی Toggle-on
+        // 
         if (message.content === "/Toggle-on") {
-            const guild = message.guild; // بدەردەوامی ئەو سێرڤەرەی دیسکۆردەکەی دەتەوێت کاریگەر بکەیت
-            const channel = message.channel; // بدەردەوامی ئەو چەناڵەی دیسکۆردەکەی دەتەوێت کاریگەر بکەیت
-
-            // ئەکتیڤ کردنی کۆماند لە چەناڵەکەی دیاری کراوە
-            // تێبینی: بۆ ئەوەی کۆماندەکەت ئەکتیڤ بکەی، پێویستە بەرەوپێشاندانی کاریگەری گواستنەوەی کۆماندی "Toggle-on" بەپێش دانانی ئەم کۆدەکەی
-            // به‌شێوه‌ی پاره‌دانی ئه‌و چه‌ناڵه‌ی که‌ ده‌ته‌وێت کۆماندی Toggle-on بەردەوامی بکەی، لەوانەیە ئەم کۆدەی خوارەوە بۆ خۆکارانە چالاک دەکات.
-            // ئەگەر کاربر لە بەردەوامی کردنی کۆماندی Toggle-on وەرگیرا، ئەوا چالاک دەکرێت و پاشان دەتوانیت چات بکەیت.
-            // تکایە دەقی ئەم قسەیە پێناسە بکە بۆ بەردەوامی کردنی کۆماندی Toggle-on
+            const guild = message.guild;
+            const channel = message.channel;
         }
         
          client.on('interactionCreate', async interaction => {
@@ -41,7 +35,6 @@ client.on("messageCreate", async (message) => {
             await interaction.reply('Toggling on.');
         })
 
-        // چالاک کردنی مۆدێل بۆ وەرگرتنی وەڵامی چاودێری بۆ پیشاندانی بۆشایی
         const { response } = await model.generateContent(message.cleanContent);
 
         // وەرگرتنی وەڵامی چاودێری بۆ ئەو پەیامەی کە بۆشایی دیاری کراوە
