@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
 const MODEL = "gemini-pro";
-const API_KEY = process.env.API_KEY || "AIzaSyDPgEcHAHjZMrFBs_iMBZYPaKCNiRgmu0U";
+const API_KEY = process.env.API_KEY || "";
 const BOT_TOKEN = process.env.BOT_TOKEN || "";
 // const CHANNEL_ID = process.env.CHANNEL_ID || "1208404049393614858";
 
