@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
 const MODEL = "gemini-pro";
 const API_KEY = process.env.API_KEY || "AIzaSyDPgEcHAHjZMrFBs_iMBZYPaKCNiRgmu0U";
-const BOT_TOKEN = process.env.BOT_TOKEN || "MTIwODQxMjEyMzI5MDUzMzkwOA.Gzr8yl.iugwii6gGoxMDWWDhPmFRgC7hbyqvXYLV7B96E";
+const BOT_TOKEN = process.env.BOT_TOKEN || "";
 // const CHANNEL_ID = process.env.CHANNEL_ID || "1208404049393614858";
 
 const ai = new GoogleGenerativeAI(API_KEY);
